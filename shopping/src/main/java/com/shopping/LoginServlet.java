@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ public class LoginServlet extends HttpServlet {
 
 	// 12.12.12.12
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		System.out.println("I am inside doget method");
 		String uid = req.getParameter("uid");
 		String pwd = req.getParameter("pwd");
 		if(uid.equals("john") && pwd.equals("jee"))
@@ -25,7 +28,15 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		doGet(req,res);
+		System.out.println("I am inside dopost method");
+		String uid = req.getParameter("uid");
+		String pwd = req.getParameter("pwd");
+		if(uid.equals("john") && pwd.equals("jee"))
+			res.sendRedirect("success.html");
+		else
+			res.sendRedirect("error.html");
+
+		
 		/*
 		// 12.12.12.12
 		String ip = req.getRemoteAddr();
