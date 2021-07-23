@@ -17,20 +17,37 @@
 			
 			<div id="product">
 				<div id="temp" style="height:100%;width:50%;float:left">
-					<form method="get" action="/login">
+					<form method="get" action="/register">
 					
 					<table>
 						<tr>
 							<td>Userid</td>
-							<td><input  type="text" id="uid" name="userid"  ></input></td>
+							<td><input  type="text" id="reguid" name="reguid"  ></input></td>
 						</tr>
 						<tr>
 							<td>Password</td>
-							<td><input type="password" id="pwd" name="pwd"></input></td>
+							<td><input type="password" id="regpwd" name="regpwd"></input></td>
 						</tr>
 						<tr>
+							<td>firstname</td>
+							<td><input type="text" id="regfn" name="regfn"></input></td>
+						</tr>
+						<tr>
+							<td>lastname</td>
+							<td><input type="text" id="regfl" name="regfl"></input></td>
+						</tr>
+						<tr>
+							<td>email</td>
+							<td><input type="text" id="regemail" name="regemail"></input></td>
+						</tr>
+						<tr>
+							<td>phone</td>
+							<td><input type="text" id="regphone" name="regphone"></input></td>
+						</tr>
+						
+						<tr>
 							<td></td>
-							<td><input id="loginsubmit" type="submit"></input></td>
+							<td><input id="regsubmit" value="register" type="submit"></input></td>
 						</tr>
 					</table>
 					<textarea rows=5 cols=10></textarea>

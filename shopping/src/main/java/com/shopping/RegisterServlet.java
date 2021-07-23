@@ -13,32 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression;
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/doesUserExist")
+public class RegisterServlet extends HttpServlet {
 
-	// userid=john&pwd=jane
 	// 12.12.12.12
+	// registerUser=john123&registerPwd=joh123
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		System.out.println("I am inside doget method");
-		String uid = req.getParameter("userid");
-		String pwd = req.getParameter("pwd");
-		if(uid.equals("john") && pwd.equals("jee"))
-			res.sendRedirect("success.html");
+		String uid = req.getParameter("registerUser");
+		if(uid.equals("john") )
+			res.getWriter().write("true");
 		else
-			res.sendRedirect("error.html");
+			res.getWriter().write("false");
 	}
-	
-
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		System.out.println("I am inside dopost method");
-		String uid = req.getParameter("uid");
-		String pwd = req.getParameter("pwd");
-		if(uid.equals("john") && pwd.equals("jee"))
-			res.sendRedirect("success.html");
-		else
-			res.sendRedirect("error.html");
-
+		doGet(req,res);
 		
 		/*
 		// 12.12.12.12

@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
 	$("#loginsubmit").click(validatelogin);
+	$("#reguid").blur(checkUser);
 	$(".prodDisplay").click(animate);
 	/*
 		// move mouse over, i want to call "header()" js function
@@ -10,7 +11,29 @@ $(document).ready(function() {
 		what function to call = header	
 	*/
 });
+function checkUser(){
 
+	var checkUserAjaxObj={
+	        url: '/doesUserExist',
+	        type: 'post',
+	        data: {
+	        	registerUser:$("#reguid").val()
+			},
+	        context: this,
+		    success: function (data) {
+	        		if(data=="true")
+	        			alert("userid already taken");
+	        		else
+	        			alert("userid available");
+		        },
+	        error: function (data) {
+	        	console.log("failure");
+	        }
+	};
+	
+	$.ajax(  checkUserAjaxObj  );
+	
+}
 function animate(){
 	$(".prodDisplay").slideUp(10000);
 }
