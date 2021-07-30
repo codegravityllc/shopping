@@ -1,4 +1,4 @@
-package com.shopping;
+package com.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,15 +17,28 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression;
 public class LoginServlet extends HttpServlet {
 
 	// userid=john&pwd=jane
-	// 12.12.12.12
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		System.out.println("I am inside doget method");
 		String uid = req.getParameter("userid");
 		String pwd = req.getParameter("pwd");
 		if(uid.equals("john") && pwd.equals("jee"))
-			res.sendRedirect("success.html");
-		else
-			res.sendRedirect("error.html");
+		{	
+			req.getSession().setAttribute("login", "success");
+			res.sendRedirect("http://www.google.com");
+			//res.getWriter().write("successfull login");
+			//res.setContentType("mp4");
+			/*String s="successfull login";
+			byte[] byteresponse=s.getBytes();
+			res.getOutputStream().write(byteresponse);
+			res.getOutputStream().flush();
+			*/
+		
+		}else {
+			req.getSession().setAttribute("login", "failure");
+			req.getRequestDispatcher("error.html").forward(req, res);
+			//res.getWriter().write("failed login");
+			
+		}
 	}
 	
 

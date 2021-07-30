@@ -1,4 +1,4 @@
-package com.shopping;
+package com.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
