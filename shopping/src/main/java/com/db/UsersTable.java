@@ -28,7 +28,7 @@ public class UsersTable {
 			}catch(Exception ee) {}
 		}
 	}
-	//registerUser("michael","michael1!",conn);
+	//registerUser("john","john123",conn);
 	public static void registerUser(String uid,String pwd,  Connection conn) throws  SQLException
     {
         PreparedStatement stmt = null;
@@ -36,9 +36,11 @@ public class UsersTable {
         {
             stmt = conn.prepareStatement
             		("insert into users (userid,password) values ( ?,? )");
+            								// 	static query
+            // dynamic binding
             stmt.setString(1, uid); // dynamic binding
             stmt.setString(2, pwd);
-            int count= stmt.executeUpdate();
+            int count= stmt.executeUpdate(); // insert/update/delete
             System.out.println("records created :"+count);
         }
         catch (SQLException e)
@@ -53,7 +55,7 @@ public class UsersTable {
     }
 
 	
-	//updateOrder("john","new_pasword")
+	//updateOrder("java","abc123")
 	public static void updatePwd(String uid,String pwd, Connection conn) throws  SQLException
     {
         PreparedStatement stmt = null;
@@ -115,7 +117,7 @@ public class UsersTable {
         	stmt.setString(1, userid);
         	stmt.setString(2, pwd);
             resultSet = stmt.executeQuery();
-            if(resultSet.next())
+           while(resultSet.next())
             {
             	result=true;
             }/* sample code to read multiple records
