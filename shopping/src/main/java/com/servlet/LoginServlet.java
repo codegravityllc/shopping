@@ -18,27 +18,8 @@ public class LoginServlet extends HttpServlet {
 
 	// userid=john&pwd=jane
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		System.out.println("I am inside doget method");
-		String uid = req.getParameter("userid");
-		String pwd = req.getParameter("pwd");
-		if(uid.equals("john") && pwd.equals("jee"))
-		{	
-			req.getSession().setAttribute("login", "success");
-			res.sendRedirect("http://www.google.com");
-			//res.getWriter().write("successfull login");
-			//res.setContentType("mp4");
-			/*String s="successfull login";
-			byte[] byteresponse=s.getBytes();
-			res.getOutputStream().write(byteresponse);
-			res.getOutputStream().flush();
-			*/
+			throw new ServletException("please send input in secure post method");
 		
-		}else {
-			req.getSession().setAttribute("login", "failure");
-			req.getRequestDispatcher("error.html").forward(req, res);
-			//res.getWriter().write("failed login");
-			
-		}
 	}
 	
 
